@@ -10,17 +10,17 @@ seau ajout_queue (seau s, char a[NbChiffre]){
     seau nouveau_element;
     seau t;
     nouveau_element=(element *) malloc(sizeof(element));
-    snprintf(nouveau_element->nombre, sizeof a, "%s", a);
-    nouveau_element->suivant=NULL;
+    snprintf(nouveau_element->nombre, sizeof a, "%s", a); /*On met la chaine de caractère a dans la partie nombre du noveau_element*/
+    nouveau_element->suivant=NULL; /*Comme c'est la fin on le met à NULL*/
     if(s == NULL) {
         s=nouveau_element;
     }
     else {
         t = s;
-        while (t->suivant !=NULL) {
+        while (t->suivant !=NULL) /*On va jusqu'à la fin*/ {
             t=t->suivant;
         }
-        t->suivant=nouveau_element;
+        t->suivant=nouveau_element; /*On le met à la fin*/
     }
     return (s);
 }
@@ -28,13 +28,13 @@ seau ajout_queue (seau s, char a[NbChiffre]){
 seau ajout_tete (seau s, char e[NbChiffre]) {
     seau new_element;
     new_element=(element *) malloc(sizeof(element));
-    snprintf(new_element->nombre, sizeof e, "%s", e);
-    new_element->suivant=s;
+    snprintf(new_element->nombre, sizeof e, "%s", e);  /*On met la chaine de caractère a dans la partie nombre du noveau_element*/
+    new_element->suivant=s; /*On le met au début*/
     return new_element;
 }
 
 BOOL est_vide(seau s){
-    if (s==NULL) {
+    if (s==NULL) /*Si c'est vide on le met à vrai*/ {
         return TRUE;
     }
     else {
@@ -44,33 +44,33 @@ BOOL est_vide(seau s){
 
 void afficher (seau s) {
     if (est_vide(s)==TRUE){
-        printf("Est vide seau\n");
+        printf("Est vide seau\n"); /*Si le seau est vide*/
     }
     else {
         seau p = s;
         printf("[ ");
-        while (p->suivant != NULL) {
+        while (p->suivant != NULL) /*On avance et on affiche*/ {
             printf("%s\t; ", p->nombre);
             p = p->suivant;
         }
-        printf(" %s ]\n", p->nombre);
+        printf(" %s ]\n", p->nombre); /*On affiche le dernier*/
     }
 }
 
 int taille (seau s){
     int t=0;
-    if (est_vide(s)==TRUE){
+    if (est_vide(s)==TRUE)/*Si c'est vide la taille est nulle*/{
         t=0;
     }
     else {
         seau p = s;
         while (p->suivant != NULL) {
-            if (strlen(p->nombre) > t)  {
+            if (strlen(p->nombre) > t) /*On regarde la taille si elle est plus grande on la met dans t*/ {
                 t=strlen(p->nombre);
             }
             p = p->suivant;
         }
-        if (strlen(p->nombre) > t)  {
+        if (strlen(p->nombre) > t) /*On le fait pour le dernier*/ {
             t=strlen(p->nombre);
         }
     }
@@ -86,8 +86,8 @@ seau ajoute_manquant(seau s){
         seau p = s;
         while (p->suivant != NULL) {
             tBis=strlen(p->nombre);
-            if (tBis!=t){
-                for (k=0;k<(t-tBis);k++){
+            if (tBis!=t) /*Si on est pas à la taille maximale on ajoiute des 0*/ {
+                for (k=0;k<(t-tBis);k++)/*On ajoute le bon nombre de 0*/{
                     char aux[NbChiffre]="0";
                     strcat(aux,p->nombre);
                     snprintf(p->nombre, sizeof p->nombre, "%s", aux);
@@ -95,6 +95,7 @@ seau ajoute_manquant(seau s){
             }
             p=p->suivant;
         }
+        /*On fait pareil au dernier de la liste chainée*/
         tBis=strlen(p->nombre);
         if (tBis!=t){
             for (k=0;k<(t-tBis);k++){
@@ -108,7 +109,7 @@ seau ajoute_manquant(seau s){
 }
 
 
-int correspondence (char a){
+int correspondence (char a)/*On fait correspondre un caractères à un chiffre de 1 à 16*/{
     int b;
     if (a=='0'){
         b=0;
@@ -171,23 +172,23 @@ void tri_seau(seau s, int B, seau T[]){
     int y;
 
     //Initialisation
-    for (y=0;y<B;y++){
+    for (y=0;y<B;y++) /*On initialise le tableau de seau*/{
         T[y]=(element *) malloc(sizeof(element));
         T[y]=NULL;
     }
 
     if (est_vide(s)==FALSE){
-        //Initialisation
         seau p=s;
-        while (p->suivant!=NULL){
-            i=correspondence((p->nombre)[t-1]);
-            T[i]=ajout_queue(T[i],p->nombre);
+        while (p->suivant!=NULL)/*On ajoute les élément du seau à trier dans le tableau*/{
+            i=correspondence((p->nombre)[t-1]);/*On regarde dans quelle case du tableau on doit mettre le nombre*/
+            T[i]=ajout_queue(T[i],p->nombre);/*On met le nombre*/
             p=p->suivant;
         }
+        /*Pareil pour le dernier de la liste chainée de seau*/
         i=correspondence((p->nombre)[t-1]);
         T[i]=ajout_queue(T[i],p->nombre); //Fin initialisation
 
-        //On trie
+        /*On trie (de la même manière que l'initialisation mais en avant vers les chiffres de gauche*/
         for (k=0;k<t-1;k++){
             seau T_aux[B];
             for (y=0;y<B;y++){
