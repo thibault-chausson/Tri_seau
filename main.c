@@ -11,14 +11,17 @@ int main(void)
     BOOL base=TRUE;
     int longueur;
     int lo=0;
+    char continu='o';
 
-    printf("Dans quelle base travaille-t-on ? \n");
+    printf("Dans quelle base travaille-t-on (entre 1 et 16) ? \n");
     scanf("%d", &B);
 
-    printf("Combien de nombre a trier ?\n");
-    scanf("%d",&total);
+    while(B>16 || B<1)/*Si la base saisie par l'utilisateur est incorrecte*/{
+        printf("Dans quelle base travaille-t-on (entre 1 et 16) ? \n");
+        scanf("%d", &B);
+    }
 
-    while (k<total){
+    while (continu=='o'){
         printf("Quelle est la valeur ? \n");
         scanf("%s", nb);
         longueur= strlen(nb);
@@ -30,11 +33,14 @@ int main(void)
         }
         if (base) /*S'il répond à toutes les conditions on l'ajoute dans le liste des nombres à trier*/ {
             Tab_aux = ajout_tete(Tab_aux, nb);
-            k=k+1; /*On avance dans le nombre de nombre à mettre dans la liste*/
+            printf("Avez-vous d'autre nombre à trier ? (o/n)\n");
+            scanf("%s",&continu);
         }
         else /*On informe l'utilisateur que le nombre saisie ne convient pas*/ {
             base=TRUE;
             printf("Le nombre saisie n'est pas de la bonne base !! \n");
+            printf("Avez-vous d'autre nombre à trier ? (o/n)\n");
+            scanf("%s",&continu);
         }
     }
 
@@ -47,6 +53,5 @@ int main(void)
     for ( i = 0; i < B; i++ ) /*On affiche les nombres triés*/ {
         afficher (p[i] );
     }
-
     return 0;
 }
