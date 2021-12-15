@@ -48,7 +48,7 @@ int taille (seau s){
             }
             p = p->suivant;
         }
-        }
+    }
     return(t);
 }
 
@@ -154,7 +154,7 @@ void tri_seau(seau s, int B, seau T[]){
         /*On trie (de la même manière que l'initialisation mais en avant vers les chiffres de gauche*/
         for (k=0;k<t-1;k++){
             seau T_aux[B];
-            for (y=0;y<B;y++){
+            for (y=0;y<B;y++)/*Initialisation du tableau*/{
                 T_aux[y]=(element *) malloc(sizeof(element));
                 T_aux[y]=NULL;
             }
