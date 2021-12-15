@@ -64,16 +64,13 @@ int taille (seau s){
     }
     else {
         seau p = s;
-        while (p->suivant != NULL) {
+        while (p != NULL) {
             if (strlen(p->nombre) > t) /*On regarde la taille si elle est plus grande on la met dans t*/ {
                 t=strlen(p->nombre);
             }
             p = p->suivant;
         }
-        if (strlen(p->nombre) > t) /*On le fait pour le dernier*/ {
-            t=strlen(p->nombre);
         }
-    }
     return(t);
 }
 
@@ -84,7 +81,7 @@ seau ajoute_manquant(seau s){
 
     if (est_vide(s)!=TRUE){
         seau p = s;
-        while (p->suivant != NULL) {
+        while (p!= NULL) {
             tBis=strlen(p->nombre);
             if (tBis!=t) /*Si on est pas à la taille maximale on ajoiute des 0*/ {
                 for (k=0;k<(t-tBis);k++)/*On ajoute le bon nombre de 0*/{
@@ -94,15 +91,6 @@ seau ajoute_manquant(seau s){
                 }
             }
             p=p->suivant;
-        }
-        /*On fait pareil au dernier de la liste chainée*/
-        tBis=strlen(p->nombre);
-        if (tBis!=t){
-            for (k=0;k<(t-tBis);k++){
-                char aux[NbChiffre]="0";
-                strcat(aux,p->nombre);
-                snprintf(p->nombre, sizeof p->nombre, "%s", aux);
-            }
         }
     }
     return(s);
@@ -179,15 +167,12 @@ void tri_seau(seau s, int B, seau T[]){
 
     if (est_vide(s)==FALSE){
         seau p=s;
-        while (p->suivant!=NULL)/*On ajoute les élément du seau à trier dans le tableau*/{
+        while (p!=NULL)/*On ajoute les élément du seau à trier dans le tableau*/{
             i=correspondence((p->nombre)[t-1]);/*On regarde dans quelle case du tableau on doit mettre le nombre*/
             T[i]=ajout_queue(T[i],p->nombre);/*On met le nombre*/
             p=p->suivant;
         }
-        /*Pareil pour le dernier de la liste chainée de seau*/
-        i=correspondence((p->nombre)[t-1]);
-        T[i]=ajout_queue(T[i],p->nombre); //Fin initialisation
-
+        
         /*On trie (de la même manière que l'initialisation mais en avant vers les chiffres de gauche*/
         for (k=0;k<t-1;k++){
             seau T_aux[B];
@@ -198,13 +183,11 @@ void tri_seau(seau s, int B, seau T[]){
             for (j=0;j<B;j++){
                 if (est_vide(T[j])==FALSE){
                     seau q=T[j];
-                    while (q->suivant!=NULL){
+                    while (q!=NULL){
                         i=correspondence((q->nombre)[t-k-2]);
                         T_aux[i]=ajout_queue(T_aux[i],q->nombre);
                         q=q->suivant;
                     }
-                    i=correspondence((q->nombre)[t-k-2]);
-                    T_aux[i]=ajout_queue(T_aux[i],q->nombre);
                 }
             }
             int x;
