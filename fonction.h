@@ -16,18 +16,18 @@
 #include <string.h>
 #include "structure.h"
 
-seau ajout_queue (seau s, char a[NbChiffre]);
-
-void afficher (seau s);
-
 BOOL est_vide (seau s);
+
+seau ajout_queue (seau s, char a[NbChiffre]);
 
 int taille(seau s);
 
 seau ajoute_manquant(seau s);
 
+int correspondence (char a);
+
 void tri_seau(seau s, int B, seau T[]);
 
-int correspondence (char a);
+void afficher (seau s);
 
 #endif //TESTE_FONCTION_H

@@ -6,6 +6,15 @@
 #include "structure.h"
 #include <stdlib.h>
 
+BOOL est_vide(seau s){
+    if (s==NULL) /*Si c'est vide on le met à vrai*/ {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
 seau ajout_queue (seau s, char a[NbChiffre]){
     seau nouveau_element;
     seau t;
@@ -25,29 +34,6 @@ seau ajout_queue (seau s, char a[NbChiffre]){
     return (s);
 }
 
-BOOL est_vide(seau s){
-    if (s==NULL) /*Si c'est vide on le met à vrai*/ {
-        return TRUE;
-    }
-    else {
-        return FALSE;
-    }
-}
-
-void afficher (seau s) {
-    if (est_vide(s)==TRUE){
-        printf("Est vide seau\n"); /*Si le seau est vide*/
-    }
-    else {
-        seau p = s;
-        printf("[ ");
-        while (p->suivant != NULL) /*On avance et on affiche*/ {
-            printf("%s\t; ", p->nombre);
-            p = p->suivant;
-        }
-        printf(" %s ]\n", p->nombre); /*On affiche le dernier*/
-    }
-}
 
 int taille (seau s){
     int t=0;
@@ -187,5 +173,20 @@ void tri_seau(seau s, int B, seau T[]){
                 T[x]=T_aux[x];
             }
         }
+    }
+}
+
+void afficher (seau s) {
+    if (est_vide(s)==TRUE){
+        printf("Est vide seau\n"); /*Si le seau est vide*/
+    }
+    else {
+        seau p = s;
+        printf("[ ");
+        while (p->suivant != NULL) /*On avance et on affiche*/ {
+            printf("%s\t; ", p->nombre);
+            p = p->suivant;
+        }
+        printf(" %s ]\n", p->nombre); /*On affiche le dernier*/
     }
 }
