@@ -16,20 +16,20 @@ BOOL est_vide(seau s){
 }
 
 seau ajout_queue (seau s, char a[NbChiffre]){
-    seau nouveau_element;
+    seau nouvel_element;
     seau t;
-    nouveau_element=(element *) malloc(sizeof(element));
-    snprintf(nouveau_element->nombre, sizeof a, "%s", a); /*Nous mettons la chaine de caractère "a" dans la partie nombre du nouveau_element*/
-    nouveau_element->suivant=NULL; /*Comme c'est le dernier nous le mettons à NULL*/
+    nouvel_element=(element *) malloc(sizeof(element));
+    snprintf(nouvel_element->nombre, sizeof a, "%s", a); /*Nous mettons la chaine de caractère "a" dans la partie nombre du nouvel_element*/
+    nouvel_element->suivant=NULL; /*Comme c'est le dernier nous le mettons à NULL*/
     if(s == NULL) {
-        s=nouveau_element;
+        s=nouvel_element;
     }
     else {
         t = s;
         while (t->suivant !=NULL) /*Nous allons jusqu'à la fin*/ {
             t=t->suivant;
         }
-        t->suivant=nouveau_element; /*Nous le mettons à la fin*/
+        t->suivant=nouvel_element; /*Nous le mettons à la fin*/
     }
     return (s);
 }
