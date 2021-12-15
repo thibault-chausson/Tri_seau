@@ -18,8 +18,6 @@
 
 seau ajout_queue (seau s, char a[NbChiffre]);
 
-seau ajout_tete(seau s, char e[NbChiffre]);
-
 void afficher (seau s);
 
 BOOL est_vide (seau s);

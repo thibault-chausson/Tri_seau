@@ -25,14 +25,6 @@ seau ajout_queue (seau s, char a[NbChiffre]){
     return (s);
 }
 
-seau ajout_tete (seau s, char e[NbChiffre]) {
-    seau new_element;
-    new_element=(element *) malloc(sizeof(element));
-    snprintf(new_element->nombre, sizeof e, "%s", e);  /*On met la chaine de caractère a dans la partie nombre du noveau_element*/
-    new_element->suivant=s; /*On le met au début*/
-    return new_element;
-}
-
 BOOL est_vide(seau s){
     if (s==NULL) /*Si c'est vide on le met à vrai*/ {
         return TRUE;

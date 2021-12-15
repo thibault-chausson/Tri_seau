@@ -32,7 +32,7 @@ int main(void)
             lo=lo+1;
         }
         if (base) /*S'il répond à toutes les conditions on l'ajoute dans le liste des nombres à trier*/ {
-            Tab_aux = ajout_tete(Tab_aux, nb);
+            Tab_aux = ajout_queue(Tab_aux, nb);
             printf("Avez-vous d'autre nombre à trier ? (o/n)\n");
             scanf("%s",&continu);
         }
