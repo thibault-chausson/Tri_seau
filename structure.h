@@ -2,11 +2,11 @@
 // Created by Thibault on 01/11/2021.
 //
 
-#ifndef TESTE_STRUCTURE_H
-#define TESTE_STRUCTURE_H
+#ifndef TEST_STRUCTURE_H
+#define TEST_STRUCTURE_H
 
-//Nombre de chiffres maximale  par nombre
-#define NbChiffre 11 //Ici que 11 car met un "\0" à la fin
+//Quantité de chiffres maximale  par nombre
+#define NbChiffre 11 //Ici 11 car, il met un "\0" à la fin
 
 #define TRUE 1
 #define FALSE 0
@@ -21,4 +21,4 @@ typedef struct elem {
 
 typedef element *seau;
 
-#endif //TESTE_STRUCTURE_H
+#endif //TEST_STRUCTURE_H

@@ -2,8 +2,8 @@
 // Created by Thibault on 01/11/2021.
 //
 
-#ifndef TESTE_FONCTION_H
-#define TESTE_FONCTION_H
+#ifndef TEST_FONCTION_H
+#define TEST_FONCTION_H
 #include<stdio.h>
 #include <string.h>
 #include "structure.h"
@@ -30,4 +30,4 @@ void tri_seau(seau s, int B, seau T[]);
 
 void afficher (seau s);
 
-#endif //TESTE_FONCTION_H
+#endif //TEST_FONCTION_H

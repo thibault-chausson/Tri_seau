@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 BOOL est_vide(seau s){
-    if (s==NULL) /*Si c'est vide on le met à vrai*/ {
+    if (s==NULL) /*Si c'est vide nous le mettons à vrai*/ {
         return TRUE;
     }
     else {
@@ -19,17 +19,17 @@ seau ajout_queue (seau s, char a[NbChiffre]){
     seau nouveau_element;
     seau t;
     nouveau_element=(element *) malloc(sizeof(element));
-    snprintf(nouveau_element->nombre, sizeof a, "%s", a); /*On met la chaine de caractère a dans la partie nombre du noveau_element*/
-    nouveau_element->suivant=NULL; /*Comme c'est la fin on le met à NULL*/
+    snprintf(nouveau_element->nombre, sizeof a, "%s", a); /*Nous mettons la chaine de caractère "a" dans la partie nombre du nouveau_element*/
+    nouveau_element->suivant=NULL; /*Comme c'est le dernier nous le mettons à NULL*/
     if(s == NULL) {
         s=nouveau_element;
     }
     else {
         t = s;
-        while (t->suivant !=NULL) /*On va jusqu'à la fin*/ {
+        while (t->suivant !=NULL) /*Nous allons jusqu'à la fin*/ {
             t=t->suivant;
         }
-        t->suivant=nouveau_element; /*On le met à la fin*/
+        t->suivant=nouveau_element; /*Nous le mettons à la fin*/
     }
     return (s);
 }
@@ -43,7 +43,7 @@ int taille (seau s){
     else {
         seau p = s;
         while (p != NULL) {
-            if (strlen(p->nombre) > t) /*On regarde la taille si elle est plus grande on la met dans t*/ {
+            if (strlen(p->nombre) > t) /*Nous regardons la taille si elle est plus grande nous la mettons dans t*/ {
                 t=strlen(p->nombre);
             }
             p = p->suivant;
@@ -61,8 +61,8 @@ seau ajoute_manquant(seau s){
         seau p = s;
         while (p!= NULL) {
             tBis=strlen(p->nombre);
-            if (tBis!=t) /*Si on est pas à la taille maximale on ajoiute des 0*/ {
-                for (k=0;k<(t-tBis);k++)/*On ajoute le bon nombre de 0*/{
+            if (tBis!=t) /*Si nous ne sommes pas à la taille maximale nous ajoutons des 0*/ {
+                for (k=0;k<(t-tBis);k++)/*Nous ajoutons le bon nombre de 0*/{
                     char aux[NbChiffre]="0";
                     strcat(aux,p->nombre);
                     snprintf(p->nombre, sizeof p->nombre, "%s", aux);
@@ -75,7 +75,7 @@ seau ajoute_manquant(seau s){
 }
 
 
-int correspondence (char a)/*On fait correspondre un caractères à un chiffre de 1 à 16*/{
+int correspondence (char a)/*Nous faisons correspondre un caractère à un nombre de 0 à 15*/{
     int b;
     if (a=='0'){
         b=0;
@@ -138,20 +138,20 @@ void tri_seau(seau s, int B, seau T[]){
     int y;
 
     //Initialisation
-    for (y=0;y<B;y++) /*On initialise le tableau de seau*/{
+    for (y=0;y<B;y++) /*Nous initialisons le tableau de seau*/{
         T[y]=(element *) malloc(sizeof(element));
         T[y]=NULL;
     }
 
     if (est_vide(s)==FALSE){
         seau p=s;
-        while (p!=NULL)/*On ajoute les élément du seau à trier dans le tableau*/{
-            i=correspondence((p->nombre)[t-1]);/*On regarde dans quelle case du tableau on doit mettre le nombre*/
-            T[i]=ajout_queue(T[i],p->nombre);/*On met le nombre*/
+        while (p!=NULL)/*Nous ajoutons les éléments du seau à trier dans le tableau*/{
+            i=correspondence((p->nombre)[t-1]);/*Nous regardons dans quelle case du tableau nous devons reporter le nombre*/
+            T[i]=ajout_queue(T[i],p->nombre);/*Nous reportons le nombre*/
             p=p->suivant;
         }
         
-        /*On trie (de la même manière que l'initialisation mais en avant vers les chiffres de gauche*/
+        /*Nous trions de la même manière que l'initialisation, mais en avançant vers les chiffres de gauche*/
         for (k=0;k<t-1;k++){
             seau T_aux[B];
             for (y=0;y<B;y++)/*Initialisation du tableau*/{
@@ -183,10 +183,10 @@ void afficher (seau s) {
     else {
         seau p = s;
         printf("[ ");
-        while (p->suivant != NULL) /*On avance et on affiche*/ {
+        while (p->suivant != NULL) /*Nous avançons et nous affichons*/ {
             printf("%s\t; ", p->nombre);
             p = p->suivant;
         }
-        printf(" %s ]\n", p->nombre); /*On affiche le dernier*/
+        printf(" %s ]\n", p->nombre); /*Nous affichons le dernier*/
     }
 }
