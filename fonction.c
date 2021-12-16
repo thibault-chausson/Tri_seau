@@ -107,22 +107,22 @@ int correspondence (char a)/*Nous faisons correspondre un caractère à un nombr
     else if (a=='9'){
         b=9;
     }
-    else if (a=='a'){
+    else if (a=='a' || a=='A'){
         b=10;
     }
-    else if (a=='b'){
+    else if (a=='b'|| a=='B'){
         b=11;
     }
-    else if (a=='c'){
+    else if (a=='c'|| a=='C'){
         b=12;
     }
-    else if (a=='d'){
+    else if (a=='d'|| a=='D'){
         b=13;
     }
-    else if (a=='e'){
+    else if (a=='e'|| a=='E'){
         b=14;
     }
-    else if (a=='f'){
+    else if (a=='f'|| a=='F'){
         b=15;
     }
     return(b);
