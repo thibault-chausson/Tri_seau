@@ -13,11 +13,11 @@ int main(void)
     int lo=0;
     char continu='o';
 
-    printf("Dans quelle base travaille-t-on (entre 1 et 16) ? \n");
+    printf("Dans quelle base travaille-t-on (entre 2 et 16) ? \n");
     scanf("%d", &B);
 
-    while(B>16 || B<1)/*Si la base saisie par l'utilisateur est incorrecte*/{
-        printf("Dans quelle base travaille-t-on (entre 1 et 16) ? \n");
+    while(B>16 || B<2)/*Si la base saisie par l'utilisateur est incorrecte*/{
+        printf("Dans quelle base travaille-t-on (entre 2 et 16) ? \n");
         scanf("%d", &B);
     }
 

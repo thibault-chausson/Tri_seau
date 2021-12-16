@@ -8,14 +8,6 @@
 #include <string.h>
 #include "structure.h"
 
-#include<stdio.h>
-#include <string.h>
-#include "structure.h"
-
-#include<stdio.h>
-#include <string.h>
-#include "structure.h"
-
 BOOL est_vide (seau s);
 
 seau ajout_queue (seau s, char a[NbChiffre]);
